@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import * as fcl from '@onflow/fcl'
+import * as types from '@onflow/types'
+import { getGreeting } from './cadance/scripts/getGreeting';
 
+// 0xde3de6a3c08d0f66
+fcl.config()
+  .put('accessNode.api', 'https://access-testnet.onflow.org')
+  .put('discovery.wallet', 'https://fcl-discovery.onflow.org/testnet/authn')
 function App() {
+
+  const clickGreeting = async ()=>{
+    const result = await fcl.send([
+      fcl.script(getGreeting)
+    ]).then(
+      fcl.decode
+    )
+    console.log(result)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Flow Hackathon</h1>
+      <button onClick={clickGreeting}>Get Greeting</button>
     </div>
   );
 }
