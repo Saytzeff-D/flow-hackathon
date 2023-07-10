@@ -32,7 +32,7 @@ function App() {
       ]),
       fcl.payer(fcl.authz),
       fcl.proposer(fcl.authz),
-      fcl.authorization([fcl.authz]),
+      fcl.authorizations([fcl.authz]),
       fcl.limit(9999)
     ]).then(fcl.decode)
 
