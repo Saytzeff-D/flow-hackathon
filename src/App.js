@@ -38,6 +38,9 @@ function App() {
 
     console.log(transactionId)
   }
+  const logout = ()=>{
+    fcl.unauthenticate()
+  }
 
   return (
     <div className="App">
@@ -46,6 +49,7 @@ function App() {
       <button onClick={clickGreeting}>Get Greeting</button>
       <button onClick={changeTheGreeting}>Change The Greeting</button>
       <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }
