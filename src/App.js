@@ -30,9 +30,9 @@ function App() {
       fcl.args([
         fcl.arg("Goodbye!", types.String)
       ]),
-      fcl.payer(fcl.authz),
-      fcl.proposer(fcl.authz),
-      fcl.authorizations([fcl.authz]),
+      fcl.payer(fcl.currentUser), //curentUser or authz
+      fcl.proposer(fcl.currentUser),
+      fcl.authorizations([fcl.currentUser]),
       fcl.limit(9999)
     ]).then(fcl.decode)
 
