@@ -18,13 +18,13 @@ const SignIn = ()=>{
     }
     return(
         <>
-            <div className="bg-signin">
+            <div className="bg-signin box-signin">
                 <div className="d-flex justify-content-center px-5">
-                    <img className="mt-4 img-fluid mx-5" src={SignInBg} />
+                    <img className="mt-4 img-fluid mx-5 h-100" src={SignInBg} />
                 </div>
-                <div className="d-flex flex-md-row flex-column justify-content-center py-3 mt-1">
-                    <button onClick={buyToken} className="btn btn-purple px-5 fw-bold mx-2 mb-md-0 mb-3"> <img src={Buy} /> Buy Token</button>
-                    <button className="btn px-5 btn-outline-purple fw-bold mx-2 mb-md-0 mb-3">Sell Token</button>
+                <div className="d-flex justify-content-center token-btn py-4">
+                    <button onClick={buyToken} className="btn btn-purple px-md-5 fw-bold mx-2 mb-md-0 mb-3">Buy Token</button>
+                    <button className="btn px-md-5 btn-outline-purple fw-bold mx-2 mb-md-0 mb-3">Sell Token</button>
                 </div>
             </div>
         </>

@@ -1,9 +1,12 @@
 .bg-signin{
+    /* position: absolute; */
     background: url('../assets/Background.png') black repeat center;
     background-size: contain;
     margin: 0;
     /* height: 100vh; */
     padding: 0;
+    /* top: 0; */
+    /* bottom: 0; */
 }
 .btn-purple{
     background-color: rgb(232, 15, 232) !important;
@@ -12,4 +15,10 @@
 .btn-outline-purple{
     color: rgb(232, 15, 232) !important;
     border-color: rgb(232, 15, 232) !important;
+}
+.token-btn{
+    /* position: absolute;
+    bottom: 10px;
+    left: 10%;
+    right: 10%; */
 }
