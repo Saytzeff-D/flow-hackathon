@@ -11,16 +11,20 @@ const Ethereum = ()=>{
     const [signer, setSigner] = useState()
     const [contract, setContract] = useState()
     const [currentContractVal, setCurrentContractVal] = useState()
+    // 59140 - Linea
+    // 44787 - Celo
+    // 11155111 - Sepolia
+    // 43113 - Avalanche 
     const networks = {
         polygon: {
-            chainId: `0x${Number(137).toString(16)}`,
+            chainId: `0x${Number(80001).toString(16)}`,
             chainName: 'Polygon Mainnet',
             nativeCurrency: {
                 name: 'MATIC',
                 symbol: 'MATIC',
                 decimals: 18
             },
-            rpcUrls: ["https://polygon-rpc.com/"],
+            rpcUrls: ["https://polygon-mumbai.infura.io/v3/b2eaf08a40e040a9b0a9947867492626"],
             blockExplorerUrls: ["https://polygonscan.com/"]
         },
         bsc: {
