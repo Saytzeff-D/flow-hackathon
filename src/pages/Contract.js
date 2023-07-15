@@ -64,7 +64,7 @@ const ContractInteraction = () => {
       // Send a transaction to the contract
       const accounts = await window.ethereum.request({ method: 'eth_accounts' });
       const receipt = await contract.methods.SetName(contractData).send({ from: accounts[0] });
-      console.log(accounts, receipt)
+      console.log(receipt)
       if (receipt.transactionHash) {
         fetchDataFromContract();
       } else {

@@ -11,7 +11,47 @@ const Ethereum = ()=>{
     const [signer, setSigner] = useState()
     const [contract, setContract] = useState()
     const [currentContractVal, setCurrentContractVal] = useState()
+    const networks = {
+        polygon: {
+            chainId: `0x${Number(137).toString(16)}`,
+            chainName: 'Polygon Mainnet',
+            nativeCurrency: {
+                name: 'MATIC',
+                symbol: 'MATIC',
+                decimals: 18
+            },
+            rpcUrls: ["https://polygon-rpc.com/"],
+            blockExplorerUrls: ["https://polygonscan.com/"]
+        },
+        bsc: {
+            chainId: `0x${Number(56).toString(16)}`,
+            chainName: 'BNB Smart Chain',
+            nativeCurrency: {
+                name: 'Binance Chain Native Token',
+                symbol: 'BNB',
+                decimals: 18
+            },
+            rpcUrls: ["https://bsc-dataseed.binance.org/"],
+            blockExplorerUrls: ["https://bscscan.com/"]
+        }
+    }
 
+    const networkSwitch = (networkName)=>{
+        setError()
+        changeNetwork({networkName, setError})
+    }
+    const changeNetwork = ({networkName, setError})=>{
+        if(window.ethereum){
+            window.ethereum.request({
+                method: 'wallet_addEthereumChain', 
+                params: [
+                    {
+                        ...networks[networkName]
+                    }
+                ]
+            })
+        }
+    }
     const connectWallet = ()=>{
         if(window.ethereum){
             window.ethereum.request({method: 'eth_requestAccounts'}).then(result=>{
@@ -54,6 +94,16 @@ const Ethereum = ()=>{
             console.log(err)
         })
     }
+    const networkChange = (chainId)=>{
+        console.log({chainId})
+    }
+    useEffect(()=>{
+        window.ethereum.on('chainChanged', networkChange)
+
+        return ()=>{
+            window.ethereum.removeListener('chainChanged', networkChange)
+        }
+    }, [])
     return(
         <div>
             <h1>Ethereum Test</h1>
@@ -65,6 +115,8 @@ const Ethereum = ()=>{
             </form>
             <button onClick={connectWallet}>Connect</button>
             <button onClick={getCurrentVal}>Current Value</button>
+            <button onClick={()=>networkSwitch('polygon')}>Switch to Polygon</button>
+            <button onClick={()=>networkSwitch('bsc')}>Switch to Binance</button>
             {currentContractVal}
             {error}
         </div>
