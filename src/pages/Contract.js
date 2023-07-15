@@ -8,6 +8,7 @@ const ContractInteraction = () => {
   const [chainIDData, setChainID] = useState('loading');
   const [connectedWallet, setConnectedWallet] = useState();
   const contractAddress = '0x7f7fD6537daFf9e87015D61F8aBe320099d93197';
+  const [nameText, setNameText] = useState('')
 
   useEffect(() => {
     initializeContract();
@@ -19,8 +20,9 @@ const ContractInteraction = () => {
       // if (typeof window.ethereum !== 'undefined' && window.ethereum.isConnected()) {
         await window.ethereum.enable();
         const web3 = new Web3(window.ethereum);
-        const networkId = await web3.eth.net.getId();
-        setChainID(networkId);
+        // const networkId = await web3.eth.getId();
+        setChainID(window.ethereum.networkVersion);
+        // console.log(window.ethereum.networkVersion, 'window.ethereum.networkVersion');
         // Create an instance of the contract
         const contractInstance = new web3.eth.Contract(
           CONTRACT_ABI, // Replace CONTRACT_ABI with the ABI of your contract
@@ -60,10 +62,11 @@ const ContractInteraction = () => {
 
   const handleSet = async (e) => {
     e.preventDefault()
+    console.log(nameText)
     try {
       // Send a transaction to the contract
       const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-      const receipt = await contract.methods.SetName(contractData).send({ from: accounts[0] });
+      const receipt = await contract.methods.SetName(nameText).send({ from: accounts[0] });
       console.log(receipt)
       if (receipt.transactionHash) {
         fetchDataFromContract();
@@ -75,6 +78,9 @@ const ContractInteraction = () => {
       console.log('Error sending transaction to the contract:', error);
     }
   };
+  const setText =(text)=>{
+    setNameText(text)
+  }
 
   return (
     <div>
@@ -86,7 +92,7 @@ const ContractInteraction = () => {
         <label>Current Name: {contractData}</label>
       </div>
       <form onSubmit={handleSet}>
-        <input id="setText" />
+        <input id="setText" onChange={(e)=>setText(e.target.value)} />
         <button type="submit">Set Name</button>
     </form>
     </div>
