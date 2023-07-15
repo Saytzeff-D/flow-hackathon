@@ -5,6 +5,7 @@ import SignIn from './pages/SignIn';
 import First from './pages/First';
 import Ethereum from './pages/Ether';
 import ContractInteraction from './pages/Contract';
+import Dashboard from './pages/Dashboard';
 
 function App(){
   return (
@@ -14,6 +15,10 @@ function App(){
           <Route 
             path='/'
             element={<SignIn />}
+          />
+          <Route
+            path='/dashboard' 
+            element={<Dashboard />}
           />
           <Route
             path='/first' 
