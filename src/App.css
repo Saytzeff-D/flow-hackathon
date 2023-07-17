@@ -1,0 +1,13 @@
+.fw-less-bold {
+    font-weight: 600 !important;
+}
+.fs-7 {
+    font-size: smaller;
+}
+.fs-8 {
+    font-size: x-small;
+}
+* {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+}
