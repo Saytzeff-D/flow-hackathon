@@ -1,0 +1,26 @@
+.bg-dialog {
+    background-color: #2A1C2C !important;
+}
+.text-dialog {
+    color: #B9A2AF !important;
+}
+.text-step {
+    color: #FC3BAE !important;
+}
+.bg-input {
+    background-color: #392C34 !important;
+}
+.btn-cancel {
+    background-color: #3D3439 !important;
+    color: white !important;
+}
+.btn-buy {
+    background-color: rgb(232, 15, 232) !important;
+    color: white !important;
+}
+.border-dialog {
+    border-color: rgb(68,49,60) !important;
+}
+.bg-escrow-wallet {
+    background-color: #2A1C2B !important;
+}

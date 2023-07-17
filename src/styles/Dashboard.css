@@ -1,20 +1,22 @@
 .bg-dashboard {
-    position: absolute;
+    position: relative;
     top: 0;
     bottom: 0;
-    right: 0;
     left: 0;
+    right: 0;
     background-color: #1C1C1C;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 .bg-banner-box {
-    background-color: #05060C;
+    background-color: #05060C !important;
 }
 .btn-dashboard {
     background-color: #202125 !important;
     color: white !important;
 }
 .banner-box {
-    background: url('../assets/Rectangle\ 15.png');
+    background: url('../assets/Rectangle\ 15.png') !important;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -34,7 +36,7 @@
     color: white !important; 
     border-radius: 0% !important;
 }
-.bg-search-input {
+.bg-box {
     background-color: #2D2D2D !important;
     border-radius: 0% !important;
 }
