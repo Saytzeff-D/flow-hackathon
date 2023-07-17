@@ -13,7 +13,7 @@ const PurchaseProcedure = (props)=>{
 
     useEffect(()=>{
         console.log(steps)
-    }, [])
+    }, [steps])
 
     return (
         <div className="">
