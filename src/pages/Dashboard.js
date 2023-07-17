@@ -7,14 +7,23 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import MetaTab from "react-bootstrap/Tab";
 import MetaTabs from "react-bootstrap/Tabs";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import Sellers from "../components/Sellers";
 
 const Dashboard = ()=>{
     const [value, setValue] = useState('one');
     const [key, setKey] = useState('buy')
+    const [selectedCountry, setSelectedCountry] = useState('');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const handleSelectChange = (event)=>{
+        setSelectedCountry(event.target.value);
+    }
     return (
         <div className="bg-dashboard">
             {/* Banner Box */}
@@ -55,7 +64,7 @@ const Dashboard = ()=>{
             <div className="mx-5">
                 <div className="row w-100 mt-3">
                     {/* <Box sx={{ width: '100%' }}> */}
-                        <div className="col-2">
+                        <div className="col-2 mt-4">
                         <MetaTabs variant='pills' className="" activeKey={key} onSelect={(k)=>setKey(k)} >
                             <MetaTab tabClassName='text-tabs' eventKey="buy" title="Buy">
                                 <hr />
@@ -67,7 +76,7 @@ const Dashboard = ()=>{
                             </MetaTab>
                         </MetaTabs>
                         </div>
-                        <div className="col-5 text-white">
+                        <div className="col-5 text-white mt-4">
                             <Tabs
                                 value={value}
                                 onChange={handleChange}
@@ -75,17 +84,28 @@ const Dashboard = ()=>{
                                 indicatorColor="secondary"
                                 aria-label="secondary tabs example"
                             >
-                                <Tab value="one" label="Lin" className="text-tabs" />
-                                <Tab value="two" label="Cel" className="text-tabs" />
-                                <Tab value="three" label="Sep" className="text-tabs" />
-                                <Tab value="four" label="Aval" className="text-tabs" />
+                                <Tab value="one" label="Lin" className="text-tabs fw-less-bold" />
+                                <Tab value="two" label="Cel" className="text-tabs fw-less-bold" />
+                                <Tab value="three" label="Sep" className="text-tabs fw-less-bold" />
+                                <Tab value="four" label="Aval" className="text-tabs fw-less-bold" />
+                                <Tab value="Polygon" label="Poly" className="text-tabs fw-less-bold" />
                             </Tabs>
                         </div>
                     {/* </Box> */}
-                    <div className="col-3 mt-1">
-                        <input placeholder="Buyer, Coin, Price" className="form-control bg-search-input border-0 text-white" />
+                    <div className="col-3 mt-4">
+                        <input placeholder="Buyer, Coin, Price" className="form-control bg-box border-0 text-white" />
+                    </div>
+                    <div className="col-2 mt-0 py-0">
+                        <label className="text-tabs fw-less-bold">Country</label>
+                        <select className="form-control bg-box border-0 text-white">
+                            <option>Nigeria</option>
+                            <option>Nigeria</option>
+                            <option>Nigeria</option>
+                            <option>Nigeria</option>
+                        </select>
                     </div>
                 </div>
+                <Sellers />
             </div>
         </div>
     )
