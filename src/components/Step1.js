@@ -7,6 +7,7 @@ const Step1 = ()=>{
 
     const cancel =()=>{
         dispatch({type: 'changeState', payload: false})
+        dispatch({type: 'one', payload: true})
     }
     const buy = ()=>{
         dispatch({type: 'two', payload: true})
@@ -15,7 +16,7 @@ const Step1 = ()=>{
         <Fragment>
             <div className="d-flex justify-content-between">
                 <p className="text-white fw-normal">Purchase Procedure</p>
-                <p className="text-step fw-bold">1 out of 3</p>
+                <p className="text-step fw-bold">1 out of 4</p>
             </div>
             <div className="me-5 pe-5 mt-4">
                 <div className="form-group my-1">
