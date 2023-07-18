@@ -6,14 +6,15 @@ import '../styles/Procedure.css'
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { useSelector } from "react-redux";
+import Step3 from "./Step3";
+import Step4 from "./Step4";
 
 const PurchaseProcedure = (props)=>{
     const { open } = props
-    const steps = useSelector(state=>state.DialogReducer.steps)
-
-    useEffect(()=>{
-        console.log(steps)
-    }, [steps])
+    const one = useSelector(state=>state.DialogReducer.one)
+    const two = useSelector(state=>state.DialogReducer.two)
+    const three = useSelector(state=>state.DialogReducer.three)
+    const four = useSelector(state=>state.DialogReducer.four)
 
     return (
         <div className="">
@@ -27,20 +28,28 @@ const PurchaseProcedure = (props)=>{
                 <DialogContent className="bg-dialog rounded-0">
                 <DialogContentText id="alert-dialog-description">
                 <div className="row w-100">
-                    <div className="col-md-7 border-end border-dialog">
+                    <div className="col-md-7">
                         {
-                            steps.one
+                            one
                             ?
                             <Step1 />
                             :
-                            steps.two
+                            two
                             ?
                             <Step2 />
+                            :
+                            three
+                            ?
+                            <Step3 />
+                            :
+                            four
+                            ?
+                            <Step4 />
                             :
                             ''
                         }
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-md-5 border-start border-dialog d-none d-md-block">
                         <p className="fw-normal text-dialog">
                             Jagunlabi001
                             <span className="fs-8 fw-lighter px-4 text-dialog">392 Orders 95.2% completions</span>
