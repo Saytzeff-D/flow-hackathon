@@ -45,7 +45,7 @@ const Sellers = ()=>{
                                 </table>
                             </td>
                             <td>
-                                <button onClick={()=>setOpen(true)} className="btn btn-buy border-0 px-5 fw-less-bold">Buy LINEA</button>
+                                <button onClick={()=>setOpen(true)} className="btn btn-buy border-0 px-5 fw-less-bold">Buy USDT</button>
                             </td>
                         </tr>
                     </tbody>
