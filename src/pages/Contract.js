@@ -78,6 +78,18 @@ const ContractInteraction = () => {
       console.log('Error sending transaction to the contract:', error);
     }
   };
+  const handleEscrow = async()=>{
+    const obj = { merchant: connectedWallet, arbitra: '0x694e241F4975703abC2728ddf232A26fF499DAE9', amount: '500', chain: 'Polygon', token: 'USDC'}
+    // const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+    const receipt = await contract.methods.createEscrow(obj).send({from: connectedWallet})
+    console.log(receipt)
+      if (receipt.transactionHash) {
+        fetchDataFromContract();
+      } else {
+        console.log('Transaction failure')
+        // Handle transaction failure
+      }
+  }
   const setText =(text)=>{
     setNameText(text)
   }
@@ -94,6 +106,7 @@ const ContractInteraction = () => {
       <form onSubmit={handleSet}>
         <input id="setText" onChange={(e)=>setText(e.target.value)} />
         <button type="submit">Set Name</button>
+        <button onClick={handleEscrow}>Create Escrow</button>
     </form>
     </div>
   );
